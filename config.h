@@ -13,6 +13,8 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static unsigned int baralpha        = 100;
+static unsigned int borderalpha     = OPAQUE;
 //static const char *colors[][3]      = {
                    //fg         bg         border   
 	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -74,6 +76,9 @@ static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
 
+static const char *shutdowncmd[]  = { "shutdown now", NULL };
+static const char *rebootcmd[]  = { "reboot", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     // My Shortcuts
@@ -99,6 +104,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
     // Quit dwm
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,           {.v = shutdowncmd} },
+	{ MODKEY|ShiftMask,             XK_z,      spawn,           {.v = rebootcmd} },
     // Window Management
     { MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
     // Resize master
