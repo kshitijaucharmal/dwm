@@ -3,6 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappx     = 6;         /* gap between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
@@ -29,10 +30,11 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Brave",  NULL,       NULL,         0,            0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -61,7 +63,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 
 // My Commands
-static const char *roficmd[]  = { "rofi -show drun", NULL};
+static const char *roficmd[]  = { "rofi", "-show", "drun", NULL};
 static const char *browsercmd[] = { "brave", NULL };
 static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
@@ -71,17 +73,22 @@ static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij
 static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
+static const char *restartcmd[]  = { "cd ~/.config/dwm; sudo make install", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     // My Shortcuts
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	//{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = terminalcmd } }, // Alacritty terminal with tmux
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = terminal2cmd } }, // Non tmux alacritty
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } }, // Open Browser
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = browser_privatecmd } }, // Browser private
     { MODKEY,                       XK_q,      killclient,     {0} },
     { ControlMask,                  XK_space,  spawn,          {.v = roficmd } },
+    { MODKEY,                       XK_i,      spawn,          {.v = monitorcmd} },
+    { MODKEY,                       XK_n,      spawn,          {.v = notetakercmd} },
+    { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notetopdfcmd} },
+    { MODKEY,                       XK_F5,     spawn,          {.v = restartcmd} },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -94,15 +101,17 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
     // Quit dwm
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    // Window Management
+    { MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
+    // Resize master
+    { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+    { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 
     // Defaults removed
 	//{ MODKEY,                       XK_b,      togglebar,      {0} },
-	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+    //{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	//{ MODKEY,                       XK_Return, zoom,           {0} },
 	//{ MODKEY,                       XK_Tab,    view,           {0} },
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },

@@ -1,1 +1,1 @@
-/home/kshitij/.scripts/autostart
+/home/kshitij/.scripts/dwm_autostart
