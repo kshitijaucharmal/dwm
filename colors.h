@@ -1,0 +1,1 @@
+/home/kshitij/.cache/wal/colors-wal-dwm.h
