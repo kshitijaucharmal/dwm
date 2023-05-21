@@ -60,10 +60,29 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+// My Commands
+static const char *roficmd[]  = { "rofi -show drun", NULL};
+static const char *browsercmd[] = { "brave", NULL };
+static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
+static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
+static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
+static const char *terminalcmd[]  = { "alacritty", NULL };
+static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij/.config/alacritty/alacritty-nontmux.yml", NULL };
+static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
+static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
+static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+    // My Shortcuts
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = terminalcmd } }, // Alacritty terminal with tmux
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = terminal2cmd } }, // Non tmux alacritty
+	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } }, // Open Browser
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = browser_privatecmd } }, // Browser private
+    { MODKEY,                       XK_q,      killclient,     {0} },
+    { ControlMask,                  XK_space,  spawn,          {.v = roficmd } },
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -73,6 +92,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+    // Quit dwm
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
     // Defaults removed
