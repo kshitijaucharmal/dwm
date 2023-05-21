@@ -73,7 +73,6 @@ static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij
 static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
-static const char *restartcmd[]  = { "cd ~/.config/dwm; sudo make install", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -88,7 +87,6 @@ static const Key keys[] = {
     { MODKEY,                       XK_i,      spawn,          {.v = monitorcmd} },
     { MODKEY,                       XK_n,      spawn,          {.v = notetakercmd} },
     { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notetopdfcmd} },
-    { MODKEY,                       XK_F5,     spawn,          {.v = restartcmd} },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
