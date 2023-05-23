@@ -6,19 +6,38 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappx     = 6;         /* gap between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=10" };
+static const char *fonts[]          = { "FiraCode Nerd Font:style=Bold:size=8" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray3[]       = "#dddddd";
+static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#005577";
-static unsigned int baralpha        = 100;
+//static const char urg_fg[] = "#ffffff";
+//static const char urg_bg[] = "#A93744";
+//static const char urg_border[] = "#A93744";
+
+static unsigned int baralpha        = 150;
 static unsigned int borderalpha     = OPAQUE;
 //static const char *colors[][3]      = {
                    //fg         bg         border   
-	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	//[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+    //[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+    //[SchemeSel]  = { col_gray4, urg_bg,  urg_bg  },
+    //[SchemeUrg] =  { urg_fg,    urg_bg,  urg_border },
+//};
+//static const char norm_fg[] = "#c0c0c0";
+//static const char norm_bg[] = "#050506";
+//static const char norm_border[] = "#434344";
+
+//static const char sel_fg[] = "#c0c0c0";
+//static const char sel_bg[] = "#AB6C5E";
+//static const char sel_border[] = "#c0c0c0";
+
+//static const char *colors[][3]      = {
+    //[>               fg           bg         border                         <]
+    //[SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    //[SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+    //[SchemeUrg] =  { urg_fg,      urg_bg,    urg_border },
 //};
 
 /* tagging */
@@ -66,6 +85,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 // My Commands
 static const char *roficmd[]  = { "rofi", "-show", "drun", NULL};
+static const char *rofipasscmd[]  = { "rofi-pass", "--last-used", NULL};
 static const char *browsercmd[] = { "brave", NULL };
 static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
@@ -75,9 +95,16 @@ static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij
 static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
+static const char *scriptercmd[]  = { "/home/kshitij/.scripts/scripter", NULL };
 
-static const char *shutdowncmd[]  = { "shutdown now", NULL };
-static const char *rebootcmd[]  = { "reboot", NULL };
+static const char *shutdowncmd[]  = { "systemctl", "poweroff", NULL };
+static const char *rebootcmd[]  = { "systemctl", "reboot", NULL };
+static const char *suspendcmd[]  = { "systemctl", "suspend", NULL };
+
+static const char *incvolcmd[]  = { "amixer", "-D", "pulse", "sset", "Master", "2%+", NULL};
+static const char *decvolcmd[]  = { "amixer", "-D", "pulse", "sset", "Master", "2%-", NULL};
+static const char *incbricmd[]  = { "lux", "-a", "5%", NULL };
+static const char *decbricmd[]  = { "lux", "-s", "5%", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,20 +133,29 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,           {.v = shutdowncmd} },
 	{ MODKEY|ShiftMask,             XK_z,      spawn,           {.v = rebootcmd} },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,           {.v = suspendcmd} },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,           {.v = rofipasscmd} },
+    // Audio And Brightness
+	{ MODKEY|ShiftMask,             XK_Up,      spawn,           {.v = incbricmd} },
+	{ MODKEY|ShiftMask,             XK_Down,      spawn,           {.v = decbricmd} },
+	{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
+	{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = incvolcmd} },
     // Window Management
     { MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
     // Resize master
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+    // Full Screen
+    { MODKEY,                       XK_z,      togglebar,      {0} },
+    { MODKEY,                       XK_space,    view,           {0} },
+    { MODKEY,                       XK_s,        spawn,           {.v = scriptercmd} },
+    { MODKEY,                       XK_w,        spawn,           {.v = wallpaper_managercmd} },
 
     // Defaults removed
-	//{ MODKEY,                       XK_b,      togglebar,      {0} },
     //{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	//{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	//{ MODKEY,                       XK_Return, zoom,           {0} },
-	//{ MODKEY,                       XK_Tab,    view,           {0} },
-	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	//{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },

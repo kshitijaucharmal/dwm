@@ -57,9 +57,6 @@
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 #define ColFloat                3
-
-#define OPAQUE                  0xffU
-
 #define OPAQUE                  0xffU
 
 /* enums */
@@ -281,8 +278,8 @@ static int depth;
 static Colormap cmap;
 
 /* configuration, allows nested code to access above variables */
-#include "config.h"
 #include "colors.h"
+#include "config.h"
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
