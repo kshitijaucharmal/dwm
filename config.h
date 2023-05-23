@@ -17,7 +17,7 @@ static const char col_cyan[]        = "#005577";
 //static const char urg_bg[] = "#A93744";
 //static const char urg_border[] = "#A93744";
 
-static unsigned int baralpha        = 150;
+static unsigned int baralpha        = 190;
 static unsigned int borderalpha     = OPAQUE;
 //static const char *colors[][3]      = {
                    //fg         bg         border   
