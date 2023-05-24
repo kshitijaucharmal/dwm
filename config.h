@@ -17,7 +17,7 @@ static const char col_cyan[]        = "#005577";
 //static const char urg_bg[] = "#A93744";
 //static const char urg_border[] = "#A93744";
 
-static unsigned int baralpha        = 190;
+static unsigned int baralpha        = 200;
 static unsigned int borderalpha     = OPAQUE;
 //static const char *colors[][3]      = {
                    //fg         bg         border   
@@ -52,6 +52,10 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Brave",  NULL,       NULL,         0,            0,           -1 },
+	{ "executor-vim",  NULL,       NULL,         0,            1,           -1 },
+	{ "chtsh",  NULL,       NULL,         0,            1,           -1 },
+	{ "notes",  NULL,       NULL,         0,            1,           -1 },
+	{ "yad",  NULL,       NULL,         0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -60,11 +64,14 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+ 	{ "[@]",      spiral },
+ 	{ "[\\]",      dwindle },
 };
 
 /* key definitions */
@@ -150,6 +157,10 @@ static const Key keys[] = {
     { MODKEY,                       XK_space,    view,           {0} },
     { MODKEY,                       XK_s,        spawn,           {.v = scriptercmd} },
     { MODKEY,                       XK_w,        spawn,           {.v = wallpaper_managercmd} },
+
+    // Fibonacci layout
+    //{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
+    //{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[4]} },
 
     // Defaults removed
     //{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
