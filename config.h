@@ -117,9 +117,11 @@ static const char *backwardcmd[]  = { "playerctl", "position", "5-", NULL };
 static const char *incvolcmd[]  = { "playerctl", "volume", "0.05%+", NULL };
 static const char *decvolcmd[]  = {  "playerctl", "volume", "0.05%-", NULL };
 
+// Brightness Controls
 static const char *incbricmd[]  = { "lux", "-a", "5%", NULL };
 static const char *decbricmd[]  = { "lux", "-s", "5%", NULL };
 
+// Night Light commands
 static const char *nightlight[]  = { "redshift", "-O", "5000", NULL };
 static const char *nonightlight[]  = { "redshift", "-x", NULL };
 
@@ -155,8 +157,6 @@ static const Key keys[] = {
     // Audio And Brightness
 	{ MODKEY|ShiftMask,             XK_Up,      spawn,           {.v = incbricmd} },
 	{ MODKEY|ShiftMask,             XK_Down,      spawn,           {.v = decbricmd} },
-	{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
-	{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = incvolcmd} },
     // Window Management
     { MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
     // Resize master
@@ -170,6 +170,14 @@ static const Key keys[] = {
     { MODKEY,                       XK_e,        spawn,           {.v = file_managercmd} },
     { MODKEY,                       XK_r,        spawn,           {.v = nightlight} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,           {.v = nonightlight} },
+    // Music Controls
+	{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
+	{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = incvolcmd} },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,           {.v = playcmd} },
+	{ MODKEY,                       XK_period,      spawn,           {.v = nextcmd} },
+	{ MODKEY,                       XK_comma,      spawn,           {.v = prevcmd} },
+	{ MODKEY|ShiftMask,             XK_period,      spawn,           {.v = forwardcmd} },
+	{ MODKEY|ShiftMask,             XK_comma,      spawn,           {.v = backwardcmd} },
 
     // Fibonacci layout
     //{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
