@@ -108,10 +108,20 @@ static const char *shutdowncmd[]  = { "systemctl", "poweroff", NULL };
 static const char *rebootcmd[]  = { "systemctl", "reboot", NULL };
 static const char *suspendcmd[]  = { "systemctl", "suspend", NULL };
 
-static const char *incvolcmd[]  = { "amixer", "-D", "pulse", "sset", "Master", "2%+", NULL};
-static const char *decvolcmd[]  = { "amixer", "-D", "pulse", "sset", "Master", "2%-", NULL};
+// Song cmds (PlayerCTL)
+static const char *playcmd[]  = { "playerctl", "play-pause", NULL };
+static const char *nextcmd[]  = { "playerctl", "next", NULL };
+static const char *prevcmd[]  = { "playerctl", "previous", NULL };
+static const char *forwardcmd[]  = { "playerctl", "position", "5+", NULL };
+static const char *backwardcmd[]  = { "playerctl", "position", "5-", NULL };
+static const char *incvolcmd[]  = { "playerctl", "volume", "0.05%+", NULL };
+static const char *decvolcmd[]  = {  "playerctl", "volume", "0.05%-", NULL };
+
 static const char *incbricmd[]  = { "lux", "-a", "5%", NULL };
 static const char *decbricmd[]  = { "lux", "-s", "5%", NULL };
+
+static const char *nightlight[]  = { "redshift", "-O", "5000", NULL };
+static const char *nonightlight[]  = { "redshift", "-x", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -157,6 +167,9 @@ static const Key keys[] = {
     { MODKEY,                       XK_space,    view,           {0} },
     { MODKEY,                       XK_s,        spawn,           {.v = scriptercmd} },
     { MODKEY,                       XK_w,        spawn,           {.v = wallpaper_managercmd} },
+    { MODKEY,                       XK_e,        spawn,           {.v = file_managercmd} },
+    { MODKEY,                       XK_r,        spawn,           {.v = nightlight} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,           {.v = nonightlight} },
 
     // Fibonacci layout
     //{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
