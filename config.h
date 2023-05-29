@@ -6,7 +6,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappx     = 6;         /* gap between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "FiraCode Nerd Font:style=Bold:size=8" };
+static const char *fonts[]          = { "Robaga Rounded Black:style=Regular:size=9", "FiraCode Nerd Font:style=Bold:size=8" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -51,7 +51,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Spotify",  NULL,       NULL,       8,       0,           -1 },
+	{ "Spotify",  NULL,       NULL,       8,            0,           -1 },
 	{ "Brave",  NULL,       NULL,         0,            0,           -1 },
 	{ "executor-vim",  NULL,       NULL,         0,            1,           -1 },
 	{ "chtsh",  NULL,       NULL,         0,            1,           -1 },
@@ -164,7 +164,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
     // Full Screen
-    { MODKEY,                       XK_z,      togglebar,      {0} },
+    { MODKEY,                       XK_z,      togglefullscr,      {0} },
     { MODKEY,                       XK_space,    view,           {0} },
     { MODKEY,                       XK_s,        spawn,           {.v = scriptercmd} },
     { MODKEY,                       XK_w,        spawn,           {.v = wallpaper_managercmd} },
