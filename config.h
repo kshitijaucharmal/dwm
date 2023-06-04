@@ -57,6 +57,7 @@ static const Rule rules[] = {
 	{ "chtsh",  NULL,       NULL,         0,            1,           -1 },
 	{ "notes",  NULL,       NULL,         0,            1,           -1 },
 	{ "yad",  NULL,       NULL,         0,            1,           -1 },
+	{ "firstflutter",  NULL,       NULL,         0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -94,8 +95,10 @@ static const char *termcmd[]  = { "alacritty", NULL };
 // My Commands
 static const char *roficmd[]  = { "rofi", "-show", "drun", NULL};
 static const char *rofipasscmd[]  = { "rofi-pass", "--last-used", NULL};
-static const char *browsercmd[] = { "brave", NULL };
-static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
+//static const char *browsercmd[] = { "brave", NULL };
+//static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
+static const char *browsercmd[] = { "firefox", NULL };
+static const char *browser_privatecmd[] = { "firefox", "--private-window", NULL };
 static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
 static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
 static const char *terminalcmd[]  = { "alacritty", NULL };
@@ -104,6 +107,7 @@ static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
 static const char *scriptercmd[]  = { "/home/kshitij/.scripts/scripter", NULL };
+static const char *ocrcmd[]  = { "/home/kshitij/.scripts/ocr", NULL };
 
 static const char *shutdowncmd[]  = { "systemctl", "poweroff", NULL };
 static const char *rebootcmd[]  = { "systemctl", "reboot", NULL };
@@ -139,6 +143,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_i,      spawn,          {.v = monitorcmd} },
     { MODKEY,                       XK_n,      spawn,          {.v = notetakercmd} },
     { MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notetopdfcmd} },
+    { MODKEY|ShiftMask,             XK_t,      spawn,          {.v = ocrcmd} },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
