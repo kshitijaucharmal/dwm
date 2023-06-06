@@ -3,7 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 6;         /* gap between windows */
+static const unsigned int gappx     = 12;         /* gap between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Robaga Rounded Black:style=Regular:size=9", "FiraCode Nerd Font:style=Bold:size=8" };
@@ -168,6 +168,9 @@ static const Key keys[] = {
     // Resize master
     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
     // Full Screen
     { MODKEY,                       XK_z,      togglefullscr,      {0} },
     { MODKEY,                       XK_space,    view,           {0} },
