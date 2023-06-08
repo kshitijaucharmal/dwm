@@ -1,9 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 12;         /* gap between windows */
+static const unsigned int gappx     = 25;         /* gap between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Robaga Rounded Black:style=Regular:size=9", "FiraCode Nerd Font:style=Bold:size=8" };
@@ -130,6 +130,10 @@ static const char *decbricmd[]  = { "lux", "-s", "5%", NULL };
 static const char *nightlight[]  = { "redshift", "-O", "5000", NULL };
 static const char *nonightlight[]  = { "redshift", "-x", NULL };
 
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     // My Shortcuts
@@ -180,8 +184,10 @@ static const Key keys[] = {
     { MODKEY,                       XK_r,        spawn,           {.v = nightlight} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,           {.v = nonightlight} },
     // Music Controls
-	{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
-	{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = incvolcmd} },
+	//{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
+	//{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = incvolcmd} },
+	{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = downvol} },
+	{ MODKEY|ShiftMask,             XK_Right,      spawn,           {.v = upvol} },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,           {.v = playcmd} },
 	{ MODKEY,                       XK_period,      spawn,           {.v = nextcmd} },
 	{ MODKEY,                       XK_comma,      spawn,           {.v = prevcmd} },
