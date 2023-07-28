@@ -93,12 +93,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 
 // My Commands
-static const char *roficmd[]  = { "rofi", "-show", "drun", NULL};
+// ~/.config/rofi/scripts/launcher_t3 -show-icons -show drun -display-drun Search -font "Robaga Rounded 11"
+static const char *roficmd[]  = { "/home/kshitij/.config/rofi/scripts/launcher_t3", "-show", "drun", NULL};
 static const char *rofipasscmd[]  = { "rofi-pass", "--last-used", NULL};
 //static const char *browsercmd[] = { "brave", NULL };
 //static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
-static const char *browsercmd[] = { "firefox", NULL };
-static const char *browser_privatecmd[] = { "firefox", "--private-window", NULL };
+static const char *browsercmd[] = { "brave", NULL };
+static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
 static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
 static const char *terminalcmd[]  = { "alacritty", NULL };
