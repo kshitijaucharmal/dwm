@@ -281,7 +281,6 @@ static int depth;
 static Colormap cmap;
 
 /* configuration, allows nested code to access above variables */
-#include "colors.h"
 #include "config.h"
 
 /* compile-time check if all tags fit into an unsigned int bit array. */

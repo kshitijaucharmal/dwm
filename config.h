@@ -13,18 +13,18 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#005577";
-//static const char urg_fg[] = "#ffffff";
-//static const char urg_bg[] = "#A93744";
-//static const char urg_border[] = "#A93744";
+static const char urg_fg[] = "#ffffff";
+static const char urg_bg[] = "#A93744";
+static const char urg_border[] = "#A93744";
 
 static unsigned int baralpha        = 200;
 static unsigned int borderalpha     = OPAQUE;
-//static const char *colors[][3]      = {
-                   //fg         bg         border   
-    //[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-    //[SchemeSel]  = { col_gray4, urg_bg,  urg_bg  },
-    //[SchemeUrg] =  { urg_fg,    urg_bg,  urg_border },
-//};
+static const char *colors[][3]      = {
+//g                  fg         bg         border   
+    [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+    [SchemeSel]  = { col_gray4, urg_bg,  urg_bg  },
+    [SchemeUrg] =  { urg_fg,    urg_bg,  urg_border },
+};
 //static const char norm_fg[] = "#c0c0c0";
 //static const char norm_bg[] = "#050506";
 //static const char norm_border[] = "#434344";
