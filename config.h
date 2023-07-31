@@ -102,6 +102,7 @@ static const char *browsercmd[] = { "brave", NULL };
 static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
 static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
+static const char *random_wallpapercmd[]  = { "/home/kshitij/.scripts/chwal", NULL };
 static const char *terminalcmd[]  = { "alacritty", NULL };
 static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij/.config/alacritty/alacritty-nontmux.yml", NULL };
 static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
@@ -182,7 +183,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_s,        spawn,           {.v = scriptercmd} },
     { MODKEY,                       XK_w,        spawn,           {.v = wallpaper_managercmd} },
     { MODKEY,                       XK_e,        spawn,           {.v = file_managercmd} },
-    { MODKEY,                       XK_r,        spawn,           {.v = nightlight} },
+    { MODKEY,                       XK_r,        spawn,           {.v = random_wallpapercmd} },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,           {.v = nonightlight} },
     // Music Controls
 	//{ MODKEY|ShiftMask,             XK_Left,      spawn,           {.v = decvolcmd} },
