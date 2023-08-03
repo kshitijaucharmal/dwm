@@ -14,8 +14,8 @@ static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#005577";
 static const char urg_fg[] = "#ffffff";
-static const char urg_bg[] = "#A93744";
-static const char urg_border[] = "#A93744";
+static const char urg_bg[] = "#CBA6F7";
+static const char urg_border[] = "#CBA6F7";
 
 static unsigned int baralpha        = 200;
 static unsigned int borderalpha     = OPAQUE;
