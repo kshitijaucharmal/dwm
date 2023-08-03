@@ -135,6 +135,7 @@ static const char *nonightlight[]  = { "redshift", "-x", NULL };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+static const char *screenshotcmd[] = { "scrot" ,"$HOME/pix/Screenshots/ss-%Y-%m-%d-%S.png", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -195,6 +196,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_comma,      spawn,           {.v = prevcmd} },
 	{ MODKEY|ShiftMask,             XK_period,      spawn,           {.v = forwardcmd} },
 	{ MODKEY|ShiftMask,             XK_comma,      spawn,           {.v = backwardcmd} },
+	{ MODKEY,                       XK_Print,      spawn,           {.v = screenshotcmd} },
 
     // Fibonacci layout
     //{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
