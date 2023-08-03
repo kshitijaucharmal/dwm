@@ -90,7 +90,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 
 // My Commands
 // ~/.config/rofi/scripts/launcher_t3 -show-icons -show drun -display-drun Search -font "Robaga Rounded 11"
@@ -100,12 +100,12 @@ static const char *rofipasscmd[]  = { "rofi-pass", "--last-used", NULL};
 //static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *browsercmd[] = { "brave", NULL };
 static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
-static const char *file_managercmd[]  = { "alacritty", "-e", "lf", NULL };
+static const char *file_managercmd[]  = { "kitty", "-e", "lf", NULL };
 static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
 static const char *random_wallpapercmd[]  = { "/home/kshitij/.scripts/chwal", NULL };
-static const char *terminalcmd[]  = { "alacritty", NULL };
-static const char *terminal2cmd[]  = { "alacritty", "--config-file=/home/kshitij/.config/alacritty/alacritty-nontmux.yml", NULL };
-static const char *monitorcmd[]  = { "alacritty", "-e", "bpytop", NULL };
+static const char *terminalcmd[]  = { "kitty", NULL };
+//static const char *terminal2cmd[]  = { "kitty", "--config=/home/kshitij/.config/kitty/kitty-nontmux.yml", NULL };
+static const char *monitorcmd[]  = { "kitty", "-e", "bpytop", NULL };
 static const char *notetakercmd[]  = { "/home/kshitij/.scripts/note-taker", NULL };
 static const char *notetopdfcmd[]  = { "/home/kshitij/.scripts/note-to-pdf", NULL };
 static const char *scriptercmd[]  = { "/home/kshitij/.scripts/scripter", NULL };
@@ -140,8 +140,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
     // My Shortcuts
 	//{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = terminalcmd } }, // Alacritty terminal with tmux
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = terminal2cmd } }, // Non tmux alacritty
+	{ MODKEY,                       XK_Return, spawn,          {.v = terminalcmd } }, // kitty terminal with tmux
+	//{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = terminal2cmd } }, // Non tmux kitty
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd } }, // Open Browser
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = browser_privatecmd } }, // Browser private
     { MODKEY,                       XK_q,      killclient,     {0} },
