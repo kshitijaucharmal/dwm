@@ -13,7 +13,7 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#dddddd";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#005577";
-static const char urg_fg[] = "#ffffff";
+static const char urg_fg[] = "#11111B";
 static const char urg_bg[] = "#CBA6F7";
 static const char urg_border[] = "#CBA6F7";
 
@@ -137,6 +137,8 @@ static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%"
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 static const char *screenshotcmd[] = { "scrot" ,"$HOME/pix/Screenshots/ss-%Y-%m-%d-%S.png", NULL };
 
+static const char *wificmd[] = { "/home/kshitij/.scripts/connect-to-wifi", NULL };
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
     // My Shortcuts
@@ -197,6 +199,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,      spawn,           {.v = forwardcmd} },
 	{ MODKEY|ShiftMask,             XK_comma,      spawn,           {.v = backwardcmd} },
 	{ MODKEY,                       XK_Print,      spawn,           {.v = screenshotcmd} },
+	{ MODKEY,                       XK_n,          spawn,           {.v = wificmd} },
 
     // Fibonacci layout
     //{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
