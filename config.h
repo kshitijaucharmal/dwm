@@ -94,13 +94,11 @@ static const char *termcmd[]  = { "kitty", NULL };
 
 // My Commands
 // ~/.config/rofi/scripts/launcher_t3 -show-icons -show drun -display-drun Search -font "Robaga Rounded 11"
-static const char *roficmd[]  = { "/home/kshitij/.config/rofi/scripts/launcher_t3", "-show", "drun", NULL};
+static const char *roficmd[]  = { "/home/kshitij/.config/rofi/scripts/launcher_t6", NULL};
 static const char *rofipasscmd[]  = { "rofi-pass", "--last-used", NULL};
-//static const char *browsercmd[] = { "brave", NULL };
-//static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
 static const char *browsercmd[] = { "brave", NULL };
 static const char *browser_privatecmd[] = { "brave", "--incognito", NULL };
-static const char *file_managercmd[]  = { "kitty", "-e", "lf", NULL };
+static const char *file_managercmd[]  = { "/home/kshitij/.config/rofi/scripts/launcher_t1", NULL };
 static const char *wallpaper_managercmd[]  = { "kitty", "-e", "ranger", NULL };
 static const char *random_wallpapercmd[]  = { "/home/kshitij/.scripts/chwal", NULL };
 static const char *terminalcmd[]  = { "kitty", NULL };
